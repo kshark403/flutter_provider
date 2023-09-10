@@ -1,0 +1,159 @@
+{ 
+"name": " 🎶MegaPL4You🎬", 
+"author": "※ForYou-09/06/2022※",
+"image": "https://sv1.picz.in.th/images/2021/12/15/6rDrYz.jpg",
+"url": "https://drive.google.com/uc?id=10NDx7QjYMQY8xJmlvvQHNsgWGj0W9A4W",
+"stations":[
+
+{"name":" แจกฟรี อย่าให้ใครหลอกเงิน","author": "ของแจกฟรี","image": "https://sv1.picz.in.th/images/2022/04/25/8JlzgS.jpg","url":""},
+
+
+{"name": "     Fwsov",  "image": "https://sv1.picz.in.th/images/2021/06/10/s7O8Ne.jpg","url": "https://freelive.inwstream.com:1936/freelive-edge/fwsov_fw-iptv.stream/playlist.m3u8","referer": "xxx","userAgent": "exoplayer_video","playInNatPlayer": "true"},
+{"name": "     Fwsov",  "image": "https://sv1.picz.in.th/images/2021/06/10/s7O8Ne.jpg",  "url": "https://www.inwiptv.com/player_demo.php?channel=89781","referer": "https://www.inwiptv.com/"},
+
+{"name": "     Fwmov","image": "https://sv1.picz.in.th/images/2021/06/10/s7OHUl.jpg","url": "https://freelive.inwstream.com:1936/freelive-edge/fwmov_fw-iptv.stream/playlist.m3u8","referer": "xxx","userAgent": "exoplayer_video","playInNatPlayer": "true"},
+{"name": "     Fwmov","image": "https://sv1.picz.in.th/images/2021/06/10/s7OHUl.jpg",  "url": "https://www.inwiptv.com/player_demo.php?channel=89782","referer": "https://www.inwiptv.com/"},
+
+{"name": "   CTB","image":"https://sv1.picz.in.th/images/2022/04/27/8mNF0b.jpg","url": "http://vip.login.in.th:1935/CTB/CTB/playlist.m3u8","referer": "xxx","userAgent": "exoplayer_video","playInNatPlayer": "true"},
+{"name": "   CTB","image":"https://sv1.picz.in.th/images/2022/04/27/8mNF0b.jpg","url":"https://54c241893bf39.streamlock.net/CTB/CTB/chunklist.m3u8","userAgent": "exoplayer_video"},
+
+{ "name": "     Box Flim","image": "https://sv1.picz.in.th/images/2021/11/18/6SOzQD.png",  "url": "http://61.19.242.134/feed/202105171329/LC52/index.m3u8","userAgent": "exoplayer_video"},
+{ "name": "    Media TV","image": "https://sv1.picz.in.th/images/2021/11/18/6SOKU0.png","url": "http://61.19.242.134/feed/202105171329/LC3/index.m3u8","userAgent": "exoplayer_video"},
+{"name":"Zee หนัง","image":"https://sv1.picz.in.th/images/2022/06/09/HMNEL8.jpg","url":"http://61.19.242.134/feed/202105171329/LC5/index.m3u8"},
+
+{"name":"     HBO","image":"https://blob.panzoid.com/creation-thumbnails/97670.jpg","url":"http://ip2121.com:8081/web1/hbo/playlist.m3u8"},
+
+{name:"แอททีวี",image:"https://lh3.googleusercontent.com/pw/AM-JKLXpa8QtitS9bXeL-zBYT9-18OepS94XQmkr3VYSDQTfbmOw3ZL57tkHyiEYvNKY2HRqsivDTUTvg0-m2uTP84KLeL6E1hwvz7wCg6TxpCFEonHDBmfAR_1QHl5YUujZujHmwOjMycYHv90nGLtZmkAK=s720-no?authuser=0",
+url:"http://49.0.87.24:1936/HDAttv/Attv/playlist.m3u8"},
+
+{name:"TRUEFILM HD",image:"https://lh3.googleusercontent.com/pw/AM-JKLX2FVzIRCIInusDalo8qdHPHfn5EjmAj6J-a4hhngM_MVyj5gTPL3BnPWZuuKAQI6IHFYIcKdN0K9aaq_KHYD3HIMy3PKtFj7qPgHe0R1R2f-YFiu5nQPIxbyoe70n0rJuM3BKniw2fh1mFZ_bXOLNO=s720-no?authuser=0",
+url:"https://mediasv.online/stream_live/222_True_Film_HD/playlist.m3u8"},
+
+{name:"TRUEMOVIEHITS",image:"https://lh3.googleusercontent.com/pw/AM-JKLUBlxTWfseXBd_a1EoSyV7005g1sev8g5SMWS16lBLpZYMi0Z-605cP2ydmkKx-0xgHE0BticFibGST-P8XlMxlBpxH_scJhkC0Clf_lmWCwae--OGB_fRIamhd2IQUE41MB6lfJJqLmAcrHO-lXW6A=s722-no?authuser=0",
+url:"https://mediasv.online/stream_live/224_MovieHit/playlist.m3u8"},
+
+{name:"TRUETHAIFILM",
+image:"https://lh3.googleusercontent.com/pw/AM-JKLVbRbnUlgoEX4I0EowJEwfNuYY61P-dUp-QXZsUg0b0ceOBmmnbuhpkrS37GIRucDW2xaYJKe_cxkEPc9-c6Ii_MEEZFdFYiL8TKqrWgYHdbLh1xRQl205KIV3eJ_VZoBvYH_4r7b8_Nay3cyLZDl1V=s720-no?authuser=0",
+url:"https://mediasv.online/stream_live/236_TrueThaiFilmHD/playlist.m3u8"},
+
+{"name": "  TVB ไทย","image": "https://www.mvtv.co.th/wp-content/uploads/2020/05/TVB-%E0%B9%84%E0%B8%97%E0%B8%A2-logo-08042020.png",
+"url": "https://edge6a.v2h-cdn.com/RE_HD/smil:TVB_HD_ABR.smil/playlist.m3u8","referer": "xxx","userAgent": "exoplayer_video","playInNatPlayer": "true"},
+{"name": "    Mix Major","image": "https://www.mvtv.co.th/wp-content/uploads/2019/01/mix-logo.png","url": "https://edge6a.v2h-cdn.com/appt7/Mix_major.stream_720p/playlist.m3u8","referer": "xxx","userAgent": "exoplayer_video","playInNatPlayer": "true"},
+
+{name:"CHAINESE MORE",image:"https://lh3.googleusercontent.com/pw/AM-JKLXK9Vbl2Yk9ZyvR_3_m02RDXOccviIPMqy2XVgVo7QXi72tB4rzB1nrbByEyOtS6LmkfMmSUhZ58dZiCLyeG-Cg7PEr68uyg-ySCK7keNT17tvyd0bK-R9NZQIQF70g8BHRVNjTmfbTUAXVeDCL4wjs=s722-no?authuser=0",
+url:"https://mediasv.online/stream_live/225_TrueChinessMore/playlist.m3u8"},
+
+{name:"ASIAN MORE",image:"https://lh3.googleusercontent.com/pw/AM-JKLUW0YEtATYvs9eLnjluRQf4RqCxOYYnMSPKeD2Ep16g_Lvcds421Vq-J4imm2cOf9HN-8mX-e7sYHeHcP3jjGDcHSeavIlC602khWqNdIqwPrVLB2anmJvVcPFHqQXOAxofXOQMcmd9NtmtTlVBY_1d=s722-no?authuser=0",
+url:"https://mediasv.online/stream_live/239_AsianMore/playlist.m3u8"},
+
+{name:"KOREAN MORE",image:"https://lh3.googleusercontent.com/pw/AM-JKLVtiADvMRWqQO0jZy9Zpw78TchBFaNtzQWOMWKuqSSYSVuQJJbhPHcWJt9AaaOqTZZ7QSwlsQJsiWIfYnwAnGUgHK5NvqVHHdNks7b4ii5_AstCofbokhhFm9z-eG1V5Nl_88DZiacr7PnTRXfDOjnb=s722-no?authuser=0",
+url:"https://mediasv.online/stream_live/238_KoreanMore/playlist.m3u8"},
+
+
+{name:"จอมยุทธ์",image:"https://lh3.googleusercontent.com/pw/AM-JKLUkDabKaHaItgLoPws-minVFQtgs6F7t-gbJBCCj3OC8zKjDLl1CwPmmDElOBWUCtfjMuHA_RuUE_vUb-qTW2LMV1IswOgWwBtJL0HTCjletPHaHUIw06gQRbNmODcLMl-cPrr77xMCG5mBe2tuOCbu=s722-no?authuser=0",
+url:"http://49.0.87.24:1936/HDJomyut/Jomyut/playlist.m3u8"},
+{name:"HERO",image:"https://lh3.googleusercontent.com/pw/AM-JKLUnfCh4aoFuCjEU6PuyeEh2nHiTnqhL-MlXqk141p9EgOoAU4vcfZUou7gC_TxIGT7hehybPHqDQJIMrPOraSR2wa7tuvm1rBVF4AicYN2DdiBtpoFsLtFJ5myfg9az1an3yaB5_BTVp4U_l2H1wD7o=s722-no?authuser=0",
+url:"https://mediasv.online/stream_live/goodtv44_Hero./playlist.m3u8"},
+
+{name:"สำรวจโลก",image:"https://lh3.googleusercontent.com/pw/AM-JKLUu6O0_C6QeCRbzgL_H_frHnWuA_3iKVWb3oNLUMUWL3n7oJuzvPhLAOytVBsgBfAqCP3-RyFtAhLVl2-IDFjfpybK-9qMPoVHxh6Dk39klnjOKC8-zF4bYALvkvkJLKBpvsLlmxxpY-WOXfypNQcuo=s720-no?authuser=0",
+url:"https://mediasv.online/stream_live/goodtv55_Sumlojlok./playlist.m3u8"},
+{name:"NATGEOGRAPHIC",image:"https://lh3.googleusercontent.com/pw/AM-JKLV6Sj818f-qnNdkRl3p-pKs9S-QYuR3wOdQyL04y42fhxrnKGd0ZLxEDwMChxbJZ5bd0S-1PpBqFxqdJyrnucLVDvB3503Dc1nfj23QAh1yJZCpTO5-MIkIs_UkZcXHsVT4T2mqaZdxKwtfycj8BdZe=s720-no?authuser=0",
+url:"https://mediasv.online/stream_live/558_Nationnal_geographic/playlist.m3u8"},
+{name:"ANIMAL PLANET",image:"https://lh3.googleusercontent.com/pw/AM-JKLUMCop39UFG6zZoVGUwJj2rDlIJHsbl8IWQs_dkmtFD127nySi80UCdL2C_Wrfu2gf7QmbMeTJDk3V8z0HLH_vA60GVy87emNLqrzFBQs1YfMXxCrJsGpGiIqeMqjLxqKR1EDzxOXT-xj8kQ2ivC_Sk=s722-no?authuser=0",
+url:"https://mediasv.online/stream_live/567_Animal_Planet/playlist.m3u8"},
+
+{"name":"Cabel.TV-1","image":"https://3.imimg.com/data3/DC/FJ/MY-3286949/local-cable-tv-adds-250x250.jpg","url":"http://203.159.95.172:8081/live/action001/playlist.m3u8","playInNatPlayer": "true"},
+{"name":"Cabel.TV-2","image":"https://3.imimg.com/data3/DC/FJ/MY-3286949/local-cable-tv-adds-250x250.jpg","url":"http://203.159.95.172:8081/live/banner003/playlist.m3u8","playInNatPlayer": "true"},
+
+
+{
+"name": "🎶:::[Org]:::🎶",
+"author": "※@2aFriend@※",
+"url": "https://drive.google.com/uc?id=1PcUzIQ5NiF13v3TDo_ODD6_zKnWPVMdL",
+"image": "https://sv1.picz.in.th/images/2021/12/15/6rDrYz.jpg",
+"import": "true"},
+
+{
+"name": "🎶Gambol-TAF🎶",
+"author": "※@2aFriend@※",
+"url": "http://tiny.cc/2afrnd",
+"image": "https://sv1.picz.in.th/images/2021/12/15/6rDrYz.jpg",
+"import": "true"},
+
+{
+"name": "🎶รีบบอก-TAF🎶",
+"author": "※@2aFriend@※",
+"url": "http://tiny.cc/9h0nuz",
+"image": "https://sv1.picz.in.th/images/2021/12/15/6rDrYz.jpg",
+"import": "true"},
+
+{
+"name": "🎶woodchip-TAF🎶",
+"author": "※@2aFriend@※",
+"url": "http://tiny.cc/hf0nuz",
+"image": "https://sv1.picz.in.th/images/2021/12/15/6rDrYz.jpg",
+"import": "true"},
+
+{
+"name": "🎶MEGA-TAF🎶",
+"author": "※@2aFriend@※",
+"url": "http://tiny.cc/megaplay",
+"image": "https://sv1.picz.in.th/images/2021/12/15/6rDrYz.jpg",
+"import": "true"},
+
+{
+"name": "🎶Bata-TAF",
+"author": "※@2aFriend@※",
+"url": "https://drive.google.com/uc?id=1PEDf-BbYXp_mdLBqNTCAFVmw7s0Wkd2b",
+"image": "https://sv1.picz.in.th/images/2021/12/15/6rDrYz.jpg",
+"import": "true"},
+
+
+{
+"name": "@tee2528-TAF",
+"author": "※@2aFriend@※",
+"url": "http://tiny.cc/Frez",
+"image": "https://sv1.picz.in.th/images/2021/12/15/6rDrYz.jpg",
+"import": "true"},
+
+{
+"name": "@Angry Birds-TAF",
+"author": "※@2aFriend@※",
+"url": "http://tiny.cc/mango",
+"image": "https://sv1.picz.in.th/images/2021/12/15/6rDrYz.jpg",
+"import": "true"},
+
+{
+"name": "@ทองเอก-TAF",
+"author": "※@2aFriend@※",
+"url": "http://tiny.cc/Majoy",
+"image": "https://sv1.picz.in.th/images/2021/12/15/6rDrYz.jpg",
+"import": "true"},
+
+{
+"name": "@ไม้ใกล้ฝั่ง-TAF",
+"author": "※@2aFriend@※",
+"url": "http://tiny.cc/Aumor",
+"image": "https://sv1.picz.in.th/images/2021/12/15/6rDrYz.jpg",
+"import": "true"},
+
+
+
+
+]}
+
+Link: http://tiny.cc/M4PL
+
+
+{"name":"   Moni29Plus","image":"https://sv1.picz.in.th/images/2021/11/18/6S5JMf.png","url":"http://aya-streamer2.cdn.3bbtv.com:8080/3bb/live/109/109.mpd"},
+{ "name": "3BB ASIAN","image": "https://sv1.picz.in.th/images/2021/11/18/6S5V5y.png","url": "http://aya-streamer2.cdn.3bbtv.com:8080/3bb/live/101/101.mpd","userAgent": "KAIOS/1.5.0 (Linux;Android 10) ExoPlayerLib/2.14.1"},
+
+{"name":"HBO HD เลือกซับ","image":"https://www.img03.xyz/assets/img/ch_logo/hd-hbo.jpg","url":"http://aya-streamer2.cdn.3bbtv.com:8080/3bb/live/103/103.mpd",referer:""},
+{"name":"HBO Signature","image":"https://moviektu.com/news/logotv/movie/hbosignature.png","url":"http://aya-streamer2.cdn.3bbtv.com:8080/3bb/live/104/104.mpd",referer:""},
+{"name":"HBO Hits","image":"https://www.img03.xyz/assets/img/ch_logo/hd-hbo.jpg","url":"http://aya-streamer2.cdn.3bbtv.com:8080/3bb/live/105/105.mpd",referer:""},
+{"name":"HBO Family","image":"https://moviektu.com/news/logotv/movie/hbofamily.png","url":"http://aya-streamer2.cdn.3bbtv.com:8080/3bb/live/106/106.mpd",referer:""},
+{"name":"Cinemax","image":"https://moviektu.com/news/logotv/movie/cinemax(2).png","url":"http://aya-streamer2.cdn.3bbtv.com:8080/3bb/live/107/107.mpd",referer:""},
+
+{"name": "   HITS Movies","image": "https://we-play.live/uploads/posters/-poster1602704685.jpeg","url": "https://we-play.live/watching/tv/hits-movies","referer": "https://player.we-play.tv","userAgent": "exoplayer_video","playInNatPlayer": "true"},
+
+

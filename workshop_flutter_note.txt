@@ -1,0 +1,55 @@
+C:\Users\Chaovapan\AppData\Local\Android\Sdk
+
+https://github.com/moradnajem?tab=repositories
+
+mklink /d .\jre .\jbr
+mklink /h \jre \jbr
+
+
+https://itsallwidgets.com/
+
+
+flutter create --org com.chao first_flutter
+
+1:14
+
+// create icon
+https://pub.dev/packages/flutter_launcher_icons
+flutter pub get
+flutter pub run flutter_launcher_icons main
+
+// Run this command to change the package name.
+https://pub.dev/packages/change_app_package_name
+flutter pub run change_app_package_name:main com.new.package.name
+flutter pub run change_app_package_name:main com.kshark.chaoflutter
+
+1:27
+
+// shortcut
+fim = flutter import material.dart
+
+2:23
+2:47
+=========
+0:37:17
+
+https://www.materialpalette.com/
+https://storyset.com/food
+
+3:04:00
+
+55:40
+
+https://www.itgenius.co.th/sandbox_api/mrta_flutter_api/public/api/login
+
+1:52:00 day2/1
+1:57:00 day2/1
+
+ocker run --name some-mongo -d mongo:tag
+
+
+Could not find a declaration file for module 'axios'. 'c:/Chao/RestAPI/ultimate/frontend/node_modules/axios/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/axios` if it exists or add a new declaration (.d.ts) file containing `declare module 'axios';`
+  
+  
+1:04:11 Rest API

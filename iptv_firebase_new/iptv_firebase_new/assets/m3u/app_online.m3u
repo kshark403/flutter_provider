@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width:20%;
+    background-color: #CCCCCC; เทาอ่อน
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: #99CC66; เขียวอ่อน
+    color: white;
+}
+
+li a:hover:not(.active) {
+    background-color: #FF0000; แดง
+    color: white;
+}
+</style>
+</head>
+<body>
+<ul>
+<li><a class="active" href="https://inwiptv.com/demo.php">ทีวีดิจิตอล</a></li>
+<li><a class="active" href="https://bit.ly/3KWCjUK">ทีวีท้องถี่นไทย</a></li>
+<li><a class="active" href="http://thaidreambox.bayore.net/index.php?topic=24900.140">IPTV Online</a></li>
+<li><a class="active" href="https://we-play.live/tv">WE-PLAY</a></li>
+<li><a class="active" href="https://aisplay24hd.com/">AIS Play ดูบอลสด</a></li>
+<li><a class="active" href="https://www.doofootball.com/">ถ่ายทอดสด บอลใน-นอก</a></li>
+<li><a class="active" href="https://www.doofootball.com/dootv">เวปดูฟุตบอล+รายการทีวี</a></li>
+<li><a class="active" href="https://037moviefree.com">ดูหนังออนไลน์1</a></li>
+<li><a class="active" href="https://movie8m.co/year/2022">ดูหนังออนไลน์2</a></li>
+<li><a class="active" href="https://vxxx.com/video-258173/?campaign=10127">18 UP</a></li>    
+<li><a href="000">#ช่องตัวอย่าง#</a></li>
+<li><a href="http://ip2121.com:8081/web1/hbo/playlist.m3u8">HBO HD</a></li>
+<li><a href="http://jkt2.roll.my.id/manifest/liveorigin/index.m3u8?id=hits">HBO Hits</a></li>
+<li><a href="http://jkt2.roll.my.id/manifest/liveorigin/index.m3u8?id=sig">HBO Signature </a></li>
+<li><a href="http://jkt2.roll.my.id/manifest/liveorigin/index.m3u8?id=fam">HBO Family</a></li>
+<li><a href="http://ip2121.com:8081/live/cinemax/playlist.m3u8">Cenimax</a></li><li><a href="http://61.19.242.134/feed/202105171329/LC28/index.m3u8">Warner TV</a></li>
+<li><a href="chrome-extension://ckblfoghkjhaclegefojbgllenffajdc/player.html#https://bit.ly/3rXGqZh">ของดี ประเทศไทย</a></li>
+<li><a href="chrome-extension://ckblfoghkjhaclegefojbgllenffajdc/player.html#https://bit.ly/392XypJ">บุษบาคาเฟ่</a></li>
+<li><a href="chrome-extension://ckblfoghkjhaclegefojbgllenffajdc/player.html#https://bit.ly/3xIoJk5">Justfun</a></li>
+<li><a href="chrome-extension://ckblfoghkjhaclegefojbgllenffajdc/player.html#https://bit.ly/3vMug6D">Thainess</a></li>
+<li><a href="chrome-extension://ckblfoghkjhaclegefojbgllenffajdc/player.html#https://bit.ly/37wWZnz">Real Metro</a></li>
+<li><a href="chrome-extension://ckblfoghkjhaclegefojbgllenffajdc/player.html#https://bit.ly/3rALgeD">Sweet</a></li>
+<li><a href="chrome-extension://ckblfoghkjhaclegefojbgllenffajdc/player.html#https://bit.ly/3xDiX2P">Heart</a></li>
+<li><a href="chrome-extension://ckblfoghkjhaclegefojbgllenffajdc/player.html#https://bit.ly/3MfekAh">สำรวจโลก</a></li>
+<li><a href="chrome-extension://ckblfoghkjhaclegefojbgllenffajdc/player.html#https://bit.ly/3uLUUwS">Hero</a></li>
+<li><a href="chrome-extension://ckblfoghkjhaclegefojbgllenffajdc/player.html#https://bit.ly/3Em3S7l">Animal Show</a></li>
+<li><a href="chrome-extension://ckblfoghkjhaclegefojbgllenffajdc/player.html#https://bit.ly/37iRcSL">Bxcite</a></li>
+<li><a href="chrome-extension://ckblfoghkjhaclegefojbgllenffajdc/player.html#https://bit.ly/3rwfgIC">Mysci</a></li>
+<li><a href="chrome-extension://ckblfoghkjhaclegefojbgllenffajdc/player.html#https://bit.ly/3uOGrAz">New Explorer</a></li>
+<li><a href="chrome-extension://ckblfoghkjhaclegefojbgllenffajdc/player.html#https://bit.ly/3vpCPE8">Next Kid</a></li>
+<li><a href="http://mytv.fun/live/828ek2bb7g/padet80m3v/683001.m3u8">Super Sports Laliga</a></li>
+<li><a href="http://mytv.fun/live/828ek2bb7g/padet80m3v/688714.m3u8">Super Sports Cricket</a></li>
+<li><a href="http://mytv.fun/live/828ek2bb7g/padet80m3v/678030.m3u8">Super Sports Psi</a></li>
+<li><a href="http://mytv.fun/live/828ek2bb7g/padet80m3v/678029.m3u8">Super Sports Premier League</a></li>
+<li><a href="http://mytv.fun/live/828ek2bb7g/padet80m3v/678031.m3u8">Super Sports Grandstand</a></li>
+<li><a href="http://mytv.fun/live/828ek2bb7g/padet80m3v/678020.m3u8">Super Sports Variety1</a></li>
+<li><a href="http://mytv.fun/live/828ek2bb7g/padet80m3v/678021.m3u8">Super Sports Variety2</a></li>
+<li><a href="http://mytv.fun/live/828ek2bb7g/padet80m3v/678022.m3u8">Super Sports Variety3</a></li>
+<li><a href="http://mytv.fun/live/828ek2bb7g/padet80m3v/678023.m3u8">Super Sports Variety4</a></li>
+<li><a href="http://mytv.fun/live/828ek2bb7g/padet80m3v/683568.m3u8">Super Sports Action</a></li>
+<li><a href="http://mytv.fun/live/828ek2bb7g/padet80m3v/678024.m3u8">Super Sports Football</a></li>
+<li><a href="http://mytv.fun/live/828ek2bb7g/padet80m3v/678026.m3u8">Super Sports Rugby</a></li>
+<li><a href="http://mytv.fun/live/828ek2bb7g/padet80m3v/678028.m3u8">Super Sports Golf</a></li>
+<li><a href="http://mytv.fun/live/828ek2bb7g/padet80m3v/678025.m3u8">Super Sports Motrosport</a></li>
+<li><a href="http://mytv.fun/live/828ek2bb7g/padet80m3v/682921.m3u8">Super Sports Bluitz</a></li>
+<li><a href="http://mytv.fun/live/828ek2bb7g/padet80m3v/682919.m3u8">Super Sports Maximo1</a></li>
+<li><a href="http://mytv.fun/live/828ek2bb7g/padet80m3v/678027.m3u8">Super Sports Tennis</a></li>
+<li><a href="https://vxxx.com/video-342715/?r=1">18+UP</a></li>
+<li><a href="https://vxxx.com/video-324015/?r=1">18+UP</a></li>
+<li><a href="https://vxxx.com/video-438587/?campaign=10127">18+UP</a></li>
+<li><a href="https://vxxx.com/video-258825/?r=1">18+UP</a></li>
+<li><a href="https://vxxx.com/video-256233/?autostart=1&r=1">18+UP</a></li>
+<li><a href="https://vxxx.com/video-466281/?autostart=1&r=1">18+UP</a></li>
+<li><a href="https://vxxx.com/video-258825/?r=1">18+UP</a></li>
+<li><a href="https://inporn.com/video/92137/free-premium-video30/?campaign=10127">18+UP</a></li>
+<li><a href="https://inporn.com/video/249389/best-xxx-scene-hd-great-will-enslaves-your-mind">18+UP</a></li>
+<li><a href="https://bit.ly/3i8dkRs">18+UP</a></li>
+</ul>
+<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+</div>
+</body>
+</html>

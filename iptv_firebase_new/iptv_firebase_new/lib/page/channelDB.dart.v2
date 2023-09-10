@@ -1,0 +1,402 @@
+// ignore_for_file: file_names
+
+import 'package:android_intent/android_intent.dart';
+import 'package:flutter/material.dart';
+import 'package:tv/app.dart';
+import 'package:tv/manger/language.dart';
+import 'package:tv/manger/user-type.dart';
+import 'package:tv/models/DbChannelModel.dart';
+import 'package:tv/models/DbFavoriteModel.dart';
+import 'package:tv/models/assets.dart';
+import 'package:tv/models/loader.dart';
+import 'package:tv/models/user-model.dart';
+import 'package:tv/models/user_profile.dart';
+import 'package:tv/utils/utils.dart';
+
+// ignore: camel_case_types, must_be_immutable
+class chanelsection extends StatefulWidget {
+  // ignore: annotate_overrides
+  _chanelsectionState createState() => _chanelsectionState();
+  // ignore: non_constant_identifier_names
+  final String Channel;
+  final String screenTitle;
+  bool searchMode = false;
+  int? section;
+
+  // ignore: use_key_in_widget_constructors
+  chanelsection(this.Channel, this.screenTitle, {this.section});
+}
+
+// ignore: camel_case_types
+class _chanelsectionState extends State<chanelsection> {
+  Language lang = Language.ENGLISH;
+  Widget? appBarTitle;
+  final TextEditingController? searchTextField = TextEditingController();
+
+  @override
+  void initState() {
+    // #: implement initState
+    super.initState();
+    UserProfile.shared.getLanguage().then((value) {
+      setState(() {
+        appBarTitle = Text(
+          widget.screenTitle,
+          style: TextStyle(color: Theme.of(context).primaryColor),
+        );
+        lang = value!;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    // #: implement dispose
+    searchTextField!.dispose();
+    super.dispose();
+  }
+
+  Icon actionIcon = const Icon(Icons.search);
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<UserModel?>(
+        key: _scaffoldKey,
+        future: UserProfile.shared.getUser(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            UserModel? user = snapshot.data;
+
+            return Scaffold(
+              appBar: AppBar(
+                  backgroundColor: Theme.of(context).canvasColor,
+                  elevation: 0,
+                  iconTheme: IconThemeData(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  title: appBarTitle,
+                  centerTitle: true,
+                  actions: <Widget>[
+                    IconButton(
+                      icon: actionIcon,
+                      onPressed: () {
+                        setState(() {
+                          if (actionIcon.icon == Icons.search) {
+                            actionIcon = const Icon(Icons.close);
+                            appBarTitle = TextField(
+                              controller: searchTextField,
+                              onChanged: (value) {
+                                searchTextField!.text = value;
+                                searchTextField!.text.isEmpty
+                                    ? widget.searchMode = false
+                                    : widget.searchMode = true;
+                                searchTextField!.selection =
+                                    TextSelection.fromPosition(TextPosition(
+                                        offset: searchTextField!.text.length));
+                                setState(() {});
+                              },
+                              style: const TextStyle(
+                                color: Colors.blue,
+                              ),
+                              decoration: const InputDecoration(
+                                  prefixIcon:
+                                      Icon(Icons.search, color: Colors.blue),
+                                  hintText: "Search...",
+                                  hintStyle: TextStyle(color: Colors.blue)),
+                            );
+                          } else {
+                            actionIcon = const Icon(Icons.search);
+                            appBarTitle = Text(
+                              widget.screenTitle,
+                              style: TextStyle(
+                                  color: Theme.of(context).primaryColor),
+                            );
+                          }
+                        });
+                      },
+                    ),
+                    // IconButton(
+                    //   icon: const Icon(
+                    //     Icons.favorite,
+                    //   ),
+                    //   onPressed: () => Navigator.pushNamed(context, '/Profile'),
+                    // ),
+                  ]),
+              // body: fetchFavorite(context, searchTextField, user),
+              body: fetchFavoriteDB(context, searchTextField, user),
+              // body: user?.userType == UserType.ADMIN
+              //     ? _widgetTech(context, searchTextField)
+              //     : _widgetUser(context, searchTextField),
+            );
+          }
+
+          return const SizedBox();
+        });
+  }
+
+  Widget fetchFavoriteDB(context, searchController, user) {
+    // return FutureBuilder<List<dynamic>>(
+    //     future: FavoriteProvider().loadAllDataBySection(widget.section),
+    return StreamBuilder<List<DbFavoriteModel>>(
+        stream: favoriteProvider.onNotes(widget.section),
+        builder: (context, snapshot) {
+          List? favChannels = [];
+          if (snapshot.hasData) {
+            favChannels = snapshot.data;
+          }
+          return (user?.userType == UserType.ADMIN
+              // ? _widgetTech(context, searchTextField, favChannels)
+              ? _widgetTechDB(context, searchTextField, favChannels)
+              : _widgetTechDB(context, searchTextField, favChannels));
+        });
+  }
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
+  Widget _widgetTechDB(context, searchController, favChannels) {
+    // return FutureBuilder<List<ChannelModel>>(
+    //     future: ChannelProvider().loadAllDataBySectionId(widget.Channel),
+    return StreamBuilder<List<DbChannelModel>>(
+        stream: channelProvider.onNotes(widget.Channel),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            // ignore: non_constant_identifier_names
+            List<dynamic>? Channel = snapshot.data;
+            if (widget.searchMode) {
+              Channel = Channel!
+                  .where((element) => element.titleEN.v!
+                      .toUpperCase()
+                      .contains(searchController.text.toUpperCase()))
+                  .toList();
+            }
+
+            // print("favChannels.length : " + favChannels.length.toString());
+            if (Channel!.isEmpty) {
+              return Center(
+                  child: Text(
+                "No  added",
+                style: TextStyle(
+                    color: Theme.of(context).primaryColor, fontSize: 18),
+              ));
+            }
+            return ListView.builder(
+                itemCount: Channel.length,
+                itemBuilder: (item, index) {
+                  return MaterialButton(
+                    onPressed: () {
+                      openApp(Channel![index].streamURL.v!);
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (_) => (Channel[index].streamURL)
+                      //                 .toString()
+                      //                 .contains("rtsp:")
+                      //             ? cchannelDetailsVlc(
+                      //                 Channel: Channel[index],
+                      //               )
+                      //             :
+                      //             cchannelDetails(
+                      //                 Channel: Channel[index],
+                      //               )
+                      //             ));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Card(
+                        child: Column(
+                          // mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                IconButton(
+                                  iconSize: 35,
+                                  icon: const Icon(Icons.edit),
+                                  // onPressed: () => Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (_) => addchannel(
+                                  //             channelSelected:
+                                  //                 Channel![index]))),
+                                  onPressed: () {},
+                                ),
+                                Image.network(Channel![index].logoURL.v!,
+                                    width: 50, height: 50, errorBuilder:
+                                        (BuildContext context, Object exception,
+                                            StackTrace? stackTrace) {
+                                  return Image.asset(
+                                    // "assets/ic-logo.png",
+                                    Assets.shared.icLogo,
+                                    width: 50,
+                                    height: 50,
+                                  );
+                                }),
+                                Expanded(
+                                    child: Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Text(
+                                            lang == Language.ENGLISH
+                                                ? Channel[index].titleEN.v!
+                                                : Channel[index].titleAR.v!,
+                                            style: TextStyle(
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w500)),
+                                      ]),
+                                )),
+                                IconButton(
+                                  iconSize: 35,
+                                  icon: favChannels
+                                          .map((item) => item.channelId.v)
+                                          .contains(Channel[index].uid.v)
+                                      ? const Icon(Icons.favorite)
+                                      : const Icon(
+                                          Icons.favorite_border_outlined),
+                                  onPressed: () async {
+                                    var lstFav = favChannels.where((e) =>
+                                        e.channelId.v == Channel![index].uid.v);
+                                    // print("favId is : " + favId.first);
+                                    favChannels
+                                            .map((item) => item.channelId.v)
+                                            .contains(Channel![index].uid.v)
+                                        ? await deleteFavoriteChannelDB(
+                                            lstFav.first.id)
+                                        : await addFavoriteChannelDB(
+                                            Channel[index]);
+                                    setState(() {});
+                                  },
+                                ),
+                                IconButton(
+                                  iconSize: 35,
+                                  icon: const Icon(Icons.delete_forever),
+                                  onPressed: () {
+                                    _deleteaddchannel(
+                                        context, Channel![index].id);
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                });
+          } else {
+            return Center(
+              child: loader(context),
+            );
+          }
+        });
+  }
+
+  addFavoriteChannelDB(channel) async {
+    //print("going to add favorit na ja : " + channel.uid.v!);
+
+    var favId = idGenerator();
+    // await FavoriteProvider().addTransaction(channel, favId);
+
+    await favoriteProvider.saveNote(DbFavoriteModel()
+      ..id = int.parse(favId)
+      ..titleEN.v = channel.titleEN.v!
+      ..titleAR.v = channel.titleAR.v!
+      ..streamURL.v = channel.streamURL.v!
+      ..channelId.v = channel.uid.v!
+      ..logoURL.v = channel.logoURL.v!
+      ..uid.v = "fv_" + favId.toString()
+      ..section.v = channel.section.v!);
+  }
+
+  deleteFavoriteChannelDB(id) async {
+    //print("going to delete favorit na ja : " + id.toString());
+    // FirebaseManager.shared.deleteFavoriteChannel(context, uid: uid);
+    // await FavoriteProvider().deleteTransaction(uid);
+    await favoriteProvider.deleteNote(id);
+  }
+
+  _deleteaddchannel(context, id) {
+    showDialog<String>(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text("Delete"),
+        content: const Text("Are you sure to delete?"),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () async => {
+              // await FirebaseManager.shared
+              //     .deletechannel(context, uidchannel: uidchannel),
+              // await ChannelProvider().deleteTransaction(uidchannel),
+              await channelProvider.deleteNote(id),
+              setState(() {}),
+              Navigator.of(context).pop(),
+            },
+            child: const Text("Delete"),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text("Close"),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // callExternalBetter() async {
+  //   try {
+  //     ///checks if the app is installed on your mobile device
+  //     bool isInstalled =
+  //         await DeviceApps.isAppInstalled('com.mxtech.videoplayer.ad');
+  //     if (isInstalled) {
+  //       DeviceApps.openApp("com.mxtech.videoplayer.ad");
+  //     } else {
+  //       ///if the app is not installed it lunches google play store so you can install it from there
+  //       launch("market://details?id=" + "com.mxtech.videoplayer.ad");
+  //     }
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
+
+  static openApp(String url) async {
+    // print("url is : " + url);
+    // bool isInstalled =
+    //     await DeviceApps.isAppInstalled('com.mxtech.videoplayer.ad');
+    // if (isInstalled != false) {
+    // AndroidIntent intent = AndroidIntent(action: 'action_send', data: dt, package: url);
+    if (url.contains("youtu")) {
+      //print("url youtu is : " + url);
+      AndroidIntent intent = AndroidIntent(
+        action: 'action_view',
+        // data: "com.mxtech.videoplayer.ad",
+        data: url,
+      );
+      await intent.launch();
+    } else {
+      //print("url video is : " + url);
+      AndroidIntent intent = AndroidIntent(
+        action: 'action_view',
+        // data: "com.mxtech.videoplayer.ad",
+        data: url,
+        type: "video/*",
+      );
+      await intent.launch();
+    }
+
+    //     AndroidIntent.Intent()
+    //       ..setAction('action_send')
+    //       ..setData(Uri.parse(url))
+    //       ..setPackage(p)
+    //       ..startActivity().catchError((e) => print(e));
+    // await intent.launch();
+    // } else {
+    //   // if (await canLaunch(url))
+    //   //   await launch(url);
+    //   // else
+    //   throw 'Could not launch $url';
+    // }
+  }
+}

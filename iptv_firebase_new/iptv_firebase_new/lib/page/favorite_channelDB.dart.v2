@@ -1,0 +1,336 @@
+// ignore_for_file: file_names
+
+import 'package:flutter/material.dart';
+import 'package:tv/app.dart';
+import 'package:tv/manger/Section.dart';
+import 'package:tv/manger/language.dart';
+import 'package:tv/manger/user-type.dart';
+import 'package:tv/models/DbFavoriteModel.dart';
+import 'package:tv/models/assets.dart';
+import 'package:tv/models/channelModel.dart';
+import 'package:tv/models/loader.dart';
+import 'package:tv/models/user-model.dart';
+import 'package:tv/models/user_profile.dart';
+import 'package:tv/providers/favorite_provider.dart';
+
+import 'channel-Details.dart';
+import 'channel-Details-vlc.dart';
+
+// ignore: must_be_immutable
+class FavoriteChannel extends StatefulWidget {
+  // ignore: annotate_overrides
+  _FavoriteChannelState createState() => _FavoriteChannelState();
+  // ignore: non_constant_identifier_names
+  final String Channel;
+  final String screenTitle;
+  bool searchMode = false;
+  int? section;
+  // ignore: use_key_in_widget_constructors
+  FavoriteChannel(this.Channel, this.screenTitle, {this.section});
+}
+
+class _FavoriteChannelState extends State<FavoriteChannel> {
+  Language lang = Language.ENGLISH;
+  Widget? appBarTitle;
+  final TextEditingController? searchTextField = TextEditingController();
+
+  @override
+  void initState() {
+    // #: implement initState
+    super.initState();
+    UserProfile.shared.getLanguage().then((value) {
+      setState(() {
+        appBarTitle = Text(
+          widget.screenTitle,
+          style: TextStyle(color: Theme.of(context).primaryColor),
+        );
+        lang = value!;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    // #: implement dispose
+    searchTextField!.dispose();
+    super.dispose();
+  }
+
+  Icon actionIcon = const Icon(Icons.search);
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<UserModel?>(
+        key: _scaffoldKey,
+        future: UserProfile.shared.getUser(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            UserModel? user = snapshot.data;
+
+            return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Theme.of(context).canvasColor,
+                elevation: 0,
+                iconTheme: IconThemeData(
+                  color: Theme.of(context).primaryColor,
+                ),
+                title: appBarTitle,
+                centerTitle: true,
+              ),
+              body: user?.userType == UserType.ADMIN
+                  ? _widgetTechDB(context, searchTextField)
+                  : _widgetUserDB(context, searchTextField),
+            );
+          }
+
+          return const SizedBox();
+        });
+  }
+
+  Widget _widgetUserDB(context, searchController) {
+    // return StreamBuilder<List<FavoriteModel>>(
+    //     stream: FirebaseManager.shared.getMyFavorites(section: widget.section!),
+    return FutureBuilder<List<dynamic>>(
+        future: FavoriteProvider().loadAllDataBySection(widget.section),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            // ignore: non_constant_identifier_names
+            List? Channel = snapshot.data;
+
+            if (Channel!.isEmpty) {
+              return Center(
+                  child: Text(
+                "No  added",
+                style: TextStyle(
+                    color: Theme.of(context).primaryColor, fontSize: 18),
+              ));
+            }
+            return ListView.builder(
+                itemCount: Channel.length,
+                itemBuilder: (item, index) {
+                  return MaterialButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => (Channel[index].streamURL)
+                                      .toString()
+                                      .contains("rtsp:")
+                                  ? cchannelDetailsVlc(
+                                      Channel: ChannelModel(
+                                          section: Section
+                                              .values[Channel[index].section],
+                                          uid: Channel[index].channelId,
+                                          streamURL: Channel[index].streamURL,
+                                          logoURL: Channel[index].logoURL,
+                                          titleAR: Channel[index].titlear,
+                                          titleEN: Channel[index].titleen,
+                                          sectionuid: ""),
+                                    )
+                                  : cchannelDetails(
+                                      Channel: ChannelModel(
+                                          section: Section
+                                              .values[Channel[index].section],
+                                          uid: Channel[index].channelId,
+                                          streamURL: Channel[index].streamURL,
+                                          logoURL: Channel[index].logoURL,
+                                          titleAR: Channel[index].titlear,
+                                          titleEN: Channel[index].titleen,
+                                          sectionuid: ""),
+                                    )));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Card(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                IconButton(
+                                  iconSize: 35,
+                                  icon: const Icon(Icons.favorite),
+                                  onPressed: () async {
+                                    // FirebaseManager.shared
+                                    //     .deleteFavoriteChannel(context,
+                                    //         uid: Channel[index].uid);
+                                    await FavoriteProvider()
+                                        .deleteTransaction(Channel[index].uid);
+                                    setState(() {});
+                                  },
+                                ),
+                                Image.network(Channel[index].logoURL,
+                                    width: 50, height: 50, errorBuilder:
+                                        (BuildContext context, Object exception,
+                                            StackTrace? stackTrace) {
+                                  return Image.asset(
+                                    // "assets/ic-logo.png",
+                                    Assets.shared.icLogo,
+                                    width: 50,
+                                    height: 50,
+                                  );
+                                }),
+                                Expanded(
+                                    child: Padding(
+                                        padding: const EdgeInsets.all(8),
+                                        child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(
+                                                  lang == Language.ENGLISH
+                                                      ? Channel[index].titleen
+                                                      : Channel[index].titlear,
+                                                  style: TextStyle(
+                                                      color: Theme.of(context)
+                                                          .primaryColor,
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.w500))
+                                            ]))),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                });
+          } else {
+            return Center(
+              child: loader(context),
+            );
+          }
+        });
+  }
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
+  Widget _widgetTechDB(context, searchController) {
+    return StreamBuilder<List<DbFavoriteModel>>(
+        stream: favoriteProvider.onNotes(widget.section),
+        // return FutureBuilder<List<dynamic>>(
+        //     future: FavoriteProvider().loadAllDataBySection(widget.section),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            // ignore: non_constant_identifier_names
+            List? Channel = snapshot.data;
+
+            if (Channel!.isEmpty) {
+              return Center(
+                  child: Text(
+                "No  added",
+                style: TextStyle(
+                    color: Theme.of(context).primaryColor, fontSize: 18),
+              ));
+            }
+            return ListView.builder(
+                itemCount: Channel.length,
+                itemBuilder: (item, index) {
+                  return MaterialButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => (Channel[index].streamURL.v)
+                                      .toString()
+                                      .contains("rtsp:")
+                                  ? cchannelDetailsVlc(
+                                      Channel: ChannelModel(
+                                          section: Section
+                                              .values[Channel[index].section.v],
+                                          uid: Channel[index].channelId.v,
+                                          streamURL: Channel[index].streamURL.v,
+                                          logoURL: Channel[index].logoURL.v,
+                                          titleAR: Channel[index].titleAR.v,
+                                          titleEN: Channel[index].titleEN.v,
+                                          sectionuid: ""),
+                                    )
+                                  : cchannelDetails(
+                                      Channel: ChannelModel(
+                                          section: Section
+                                              .values[Channel[index].section.v],
+                                          uid: Channel[index].channelId.v,
+                                          streamURL: Channel[index].streamURL.v,
+                                          logoURL: Channel[index].logoURL.v,
+                                          titleAR: Channel[index].titleAR.v,
+                                          titleEN: Channel[index].titleEN.v,
+                                          sectionuid: ""),
+                                    )));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Card(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                IconButton(
+                                  iconSize: 35,
+                                  icon: const Icon(Icons.favorite),
+                                  onPressed: () async {
+                                    // FirebaseManager.shared
+                                    //     .deleteFavoriteChannel(context,
+                                    //         uid: Channel[index].uid);
+                                    // await FavoriteProvider()
+                                    //     .deleteTransaction(Channel[index].uid.v);
+                                    await favoriteProvider
+                                        .deleteNote(Channel[index].id);
+                                    setState(() {});
+                                  },
+                                ),
+                                Image.network(Channel[index].logoURL.v,
+                                    width: 50, height: 50, errorBuilder:
+                                        (BuildContext context, Object exception,
+                                            StackTrace? stackTrace) {
+                                  return Image.asset(
+                                    // "assets/ic-logo.png",
+                                    Assets.shared.icLogo,
+                                    width: 50,
+                                    height: 50,
+                                  );
+                                }),
+                                Expanded(
+                                    child: Padding(
+                                        padding: const EdgeInsets.all(8),
+                                        child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(
+                                                  lang == Language.ENGLISH
+                                                      ? Channel[index].titleEN.v
+                                                      : Channel[index]
+                                                          .titleAR
+                                                          .v,
+                                                  style: TextStyle(
+                                                      color: Theme.of(context)
+                                                          .primaryColor,
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.w500))
+                                            ]))),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                });
+          } else {
+            return Center(
+              child: loader(context),
+            );
+          }
+        });
+  }
+
+  //  Stream<List<ChannelModel>> getMyFavorite(){
+
+  //  Stream<List<FavoriteModel>> x = FirebaseManager.shared.getMyFavorites();
+  //    FirebaseManager.shared.getchannelById(id: x.c)
+
+}
